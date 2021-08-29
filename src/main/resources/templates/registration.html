@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="content">
+    <h1>Sign Up</h1>
+    <form th:action="@{/registration}" th:object="${userData}" method="POST">
+        <div><input type="text" placeholder="First Name" th:field="*{firstName}" required aria-required="true"
+                    oninvalid="this.setCustomValidity('Please Enter your name.')" oninput="setCustomValidity('')"></div>
+        <div><input type="text" placeholder="Last Name" th:field="*{lastName}" required aria-required="true"
+                    oninvalid="this.setCustomValidity('Please Enter your surname.')" oninput="setCustomValidity('')"></div>
+        <div><input type="text" placeholder="E-mail" th:field="*{email}" required aria-required="true"
+                    oninvalid="this.setCustomValidity('Please Enter your email.')" oninput="setCustomValidity('')"></div>
+        <div><input type="text" placeholder="Phone" th:field="*{phone}" required aria-required="true"
+                    oninvalid="this.setCustomValidity('Please Enter your phone number.')" oninput="setCustomValidity('')"></div>
+        <div><input type="submit" value="Register!"></div>
+    </form>
+</div>
+</body>
+</html>

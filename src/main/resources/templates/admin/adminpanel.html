@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin control panel</title>
+    <link th:href="@{/styles/cssandjs/admin.css}" rel="stylesheet" type="text/css"/>
+</head>
+<div class="menu">
+    <h3>Options:</h3>
+    <a th:href="'/_admin/allusers'"><input class="btn-style" type="button" value="View users👥"></a>
+    <a th:href="'/_admin/allnotes'"><input class="btn-style" type="button" value="View all notes📋"></a>
+    <a th:href="'/_admin/categories'"><input class="btn-style" type="button" value="View categories"></a>
+    <a th:href="'/_admin/priorities'"><input class="btn-style" type="button" value="View priorities"></a>
+</div>
+
+<body class="body-content">
+
+<div class="content">
+    <h1>Welcome to admin control panel!</h1>
+    <div>Here you can do what you want, you have power of the "GODS"!
+        <br>If you saw some ugly note or "user", just delete it. Maybe in some
+        <br>updates we will add 'edit' feature and add or delete enums.
+        <br>So don't be shy, try your godmode😈
+    </div>
+</div>
+</body>
+</html>

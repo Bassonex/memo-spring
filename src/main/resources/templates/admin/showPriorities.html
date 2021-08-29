@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" id="gotop">
+<head>
+    <meta charset="UTF-8">
+    <title>Categories</title>
+    <link th:href="@{/styles/cssandjs/admin.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/styles/cssandjs/table.js}"></script>
+</head>
+<div class="menu">
+    <h3>Options:</h3>
+    <a th:href="'/_admin/allusers'"><input class="btn-style" type="button" value="View users👥"></a>
+    <a th:href="'/_admin/allnotes'"><input class="btn-style" type="button" value="View all notes📋"></a>
+    <a th:href="'/_admin/categories'"><input class="btn-style" type="button" value="View categories"></a>
+    <a th:href="'/_admin/priorities'"><input class="btn-style" type="button" value="View priorities"></a>
+    <div class="go-top"><a href="#gotop">Lift me up!</a></div>
+</div>
+<body class="body-content">
+<div class="content">
+    <table border="2">
+        <h1>All priorities</h1>
+        <div>
+            <div><a th:href="'/_admin/new_priority/'"><input class="btn-style" type="button" value="Create new"></a>
+            </div>
+            <div th:each="prior : ${priorData}">
+
+                <tr class="tr-row" th:some-field="${prior.name}" onclick="rowClicked(this.getAttribute('some-field'))">
+                    <th class="th"><!--for row counter --></th>
+                    <td>
+                        <div th:text="${prior.name}"></div>
+                    </td>
+                </tr>
+            </div>
+        </div>
+    </table>
+</div>
+</body>
+</html>

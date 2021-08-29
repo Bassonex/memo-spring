@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" id="gotop">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes list</title>
+    <link th:href="@{/styles/cssandjs/admin.css}" rel="stylesheet" type="text/css"/>
+</head>
+<div class="menu">
+    <h3>Options:</h3>
+    <a th:href="'/_admin/allusers'"><input class="btn-style" type="button" value="View users👥"></a>
+    <a th:href="'/_admin/allnotes'"><input class="btn-style" type="button" value="View all notes📋"></a>
+    <a th:href="'/_admin/categories'"><input class="btn-style" type="button" value="View categories"></a>
+    <a th:href="'/_admin/priorities'"><input class="btn-style" type="button" value="View priorities"></a>
+    <div class="go-top"><a href="#gotop">Lift me up!</a></div>
+</div>
+<body class="body-content">
+<div class="content">
+    <table border="2">
+        <div th:switch="${#httpServletRequest.requestURI}">
+            <h1 th:case="@{/_admin/allnotes}">All notes</h1>
+            <h1 th:each="u : ${noteData}" th:case="@{/_admin/user_notes/{id}(id = ${u.userId})}"
+                th:text="${u.userName.fullName} + '\'s created notes'"></h1>
+        </div>
+        <div>
+            <div><a th:href="'/_admin/new_note/'"><input class="btn-style" type="button" value="Create new"></a>
+            </div>
+            <div th:if="${noteData.isEmpty()}">No notes here...</div>
+            <div th:each="newNote : ${noteData}">
+
+                <tr>
+                    <th class="th"><!--for row counter --></th>
+                    <td>
+                        <div>Created by: <a th:href=" '/_admin/user_notes/'+ ${newNote.userId}"><b class="txt-cap"
+                                                                                                   th:text="${newNote.userName.fullName}"></b></a>
+                        </div>
+                        <div class="txt-italic" th:text="'Title:  '+ ${newNote.title}"></div>
+                        <div class="note-view" th:text="'Note: '+ ${newNote.note}"></div>
+                        <div th:text="'Creation time: '+ ${newNote.dateTime}"></div>
+                        <div th:text="'Category: '+ ${newNote.category}"></div>
+                        <div th:text="'Priority: '+ ${newNote.notePriority}"></div>
+                    </td>
+                </tr>
+            </div>
+        </div>
+    </table>
+</div>
+</body>
+</html>

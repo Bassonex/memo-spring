@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Notes list</title>
+    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="content">
+    <table border="2">
+        <!--
+        <div th:if="${#httpServletRequest.requestURI == '/allnotes/'}">
+            <h1>All notes</h1>
+        </div>
+        <div th:if="${#httpServletRequest.requestURI == '/created/note'}">
+            <h1>Created note</h1>
+        </div>
+        <div th:if="${#httpServletRequest.requestURI == '/notes/{userName}'}">
+            <h1 th:text="${newNote.userName.fullName}"> created notes</h1>
+        </div>
+        -->
+
+        <div th:switch="${#httpServletRequest.requestURI}">
+            <h1 th:case="'/allnotes/'">All notes</h1>
+            <h1 th:case="'/created/note'">Created note</h1>
+            <h1 th:case="*" th:each="u : ${noteData}" th:text="${u.userName.fullName} + '\'s created notes'"></h1>
+        </div>
+
+
+        <div>
+            <div><a th:href="'/new/note/'"><input class="btn-style" type="button" value="Create new"></a>
+                <a th:href="'/allnotes/'"><input class="btn-style" type="button" value="All notes"></a>
+                <a th:href="'/users/'"><input class="btn-style" type="button" value="All users"></a></div>
+        </div>
+        <div th:each="newNote : ${noteData}">
+            <tr>
+                <th class="th"><!--for row counter --></th>
+                <td>
+                    <div>Created by: <b class="txt-cap" th:text="${newNote.userName.fullName}"></b></div>
+                    <div class="txt-italic" th:text="'Title:  '+ ${newNote.title}"></div>
+                    <div class="note-view" th:text="'Note: '+ ${newNote.note}"></div>
+                    <div th:text="'Creation time: '+ ${newNote.dateTime}"></div>
+                    <div th:text="'Category: '+ ${newNote.category}"></div>
+                    <div th:text="'Priority: '+ ${newNote.notePriority}"></div>
+                </td>
+            </tr>
+        </div>
+    </table>
+</div>
+</body>
+</html>

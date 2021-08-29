@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" id="gotop">
+<head>
+    <meta charset="UTF-8">
+    <title>Users list</title>
+    <link th:href="@{/styles/cssandjs/admin.css}" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" th:src="@{/styles/cssandjs/table.js}"></script>
+</head>
+<div class="menu">
+    <h3>Options:</h3>
+    <a th:href="'/_admin/allusers'"><input class="btn-style" type="button" value="View users👥"></a>
+    <a th:href="'/_admin/allnotes'"><input class="btn-style" type="button" value="View all notes📋"></a>
+    <a th:href="'/_admin/categories'"><input class="btn-style" type="button" value="View categories"></a>
+    <a th:href="'/_admin/priorities'"><input class="btn-style" type="button" value="View priorities"></a>
+    <div class="go-top"><a href="#gotop">Lift me up!</a></div>
+</div>
+<body class="body-content">
+<div class="content">
+    <table border="2">
+        <h1>All users</h1>
+        <div><a th:href="'/registration/'"><input class="btn-style" type="button" value="New user"></a></div>
+        <div th:if="${userData.isEmpty()}">No users here...</div>
+        <tr>
+            <td></td>
+            <th>
+                <div>ID</div>
+            </th>
+            <th>
+                <div>Name</div>
+            </th>
+            <th>
+                <div>Surname</div>
+            </th>
+            <th>
+                <div>Email</div>
+            </th>
+            <th>
+                <div>Phone</div>
+            </th>
+        </tr>
+        <div th:each="user : ${userData}">
+            <tr class="tr-row" th:some-field="${user.id}" onclick="rowClicked(this.getAttribute('some-field'))">
+                <th class="th"><!--for row counter--></th>
+                <td>
+                    <div th:text="${user.id}"></div>
+                </td>
+                <td>
+                    <div th:text="${user.firstName}"></div>
+                </td>
+                <td>
+                    <div th:text="${user.lastName}"></div>
+                </td>
+                <td>
+                    <div th:text="${user.email}"></div>
+                </td>
+                <td>
+                    <div th:text="${user.phone}"></div>
+                </td>
+            </tr>
+        </div>
+    </table>
+</div>
+</body>
+</html>

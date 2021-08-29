@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Users list</title>
+    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="content">
+    <table border="2">
+        <h1>All users</h1>
+        <div><a th:href="'/registration/'"><input class="btn-style" type="button" value="New user"></a>
+            <a th:href="'/db/allnotes/'"><input class="btn-style" type="button" value="All notes DB"></a></div>
+        <tr>
+            <td></td>
+            <th>
+                <div>ID</div>
+            </th>
+            <th>
+                <div>Name</div>
+            </th>
+            <th>
+                <div>Surname</div>
+            </th>
+            <th>
+                <div>Email</div>
+            </th>
+            <th>
+                <div>Phone</div>
+            </th>
+        </tr>
+        <div th:each="user : ${userData}">
+
+            <tr>
+                <th class="th"><!--for row counter --></th>
+                <td>
+                    <div th:text="${user.id}"></div>
+                </td>
+                <td>
+                    <div th:text="${user.firstName}"></div>
+                </td>
+                <td>
+                    <div th:text="${user.lastName}"></div>
+                </td>
+                <td>
+                    <div th:text="${user.email}"></div>
+                </td>
+                <td>
+                    <div th:text="${user.phone}"></div>
+                </td>
+            </tr>
+        </div>
+    </table>
+</div>
+</body>
+</html>
