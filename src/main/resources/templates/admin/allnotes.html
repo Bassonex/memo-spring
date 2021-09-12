@@ -36,8 +36,8 @@
                         <div class="txt-italic" th:text="'Title:  '+ ${newNote.title}"></div>
                         <div class="note-view" th:text="'Note: '+ ${newNote.note}"></div>
                         <div th:text="'Creation time: '+ ${newNote.dateTime}"></div>
-                        <div th:text="'Category: '+ ${newNote.category}"></div>
-                        <div th:text="'Priority: '+ ${newNote.notePriority}"></div>
+                        <div> Category: <a th:href=" '/_admin/notes/by_category/'+ ${newNote.category}" th:text="${newNote.category}"></a></div>
+                        <div> Priority: <a th:href=" '/_admin/notes/by_priority/'+ ${newNote.notePriority}" th:text="${newNote.notePriority}"></a></div>
                     </td>
                 </tr>
             </div>

@@ -90,13 +90,27 @@ public class AdminController {
 
     }
 
-    @GetMapping("_admin/allnotes/{prio}")
+    @GetMapping("_admin/notes/by_priority/{prio}")
     public String getNotesByPriorityPage(@PathVariable(name = "prio") String prio, Model model) {
         System.out.println("1) LOADING USER NOTES");
 
         NotePriority notePriority = NotePriority.valueOf(prio);
         System.out.println("Notes from db: " + adminService.getNotesByPriority(notePriority));
         model.addAttribute("noteData", adminService.getNotesByPriority(notePriority));
+
+
+        System.out.println("2) PAGE LOADED");
+        return "admin/allnotes";
+
+    }
+
+    @GetMapping("_admin/notes/by_category/{cat}")
+    public String getNotesByCategoryPage(@PathVariable(name = "cat") String cat, Model model) {
+        System.out.println("1) LOADING USER NOTES");
+
+        NoteCategory noteCategory = NoteCategory.valueOf(cat);
+        System.out.println("Notes from db: " + adminService.getNotesByCategory(noteCategory));
+        model.addAttribute("noteData", adminService.getNotesByCategory(noteCategory));
 
 
         System.out.println("2) PAGE LOADED");

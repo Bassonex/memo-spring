@@ -23,7 +23,7 @@
             </div>
             <div th:each="cat : ${catData}">
 
-                <tr>
+                <tr class="tr-row" th:some-field="${cat.name}" onclick="rowClicked(this.getAttribute('some-field'))">
                     <th class="th"><!--for row counter --></th>
                     <td>
                         <div th:text="${cat.name}"></div>

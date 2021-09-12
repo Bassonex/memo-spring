@@ -48,6 +48,15 @@ public class NoteDao {
                 rowMapper, prio.name());
     }
 
+    public List<Note> getNotesByCategory(NoteCategory cat) {
+        RowMapper<Note> rowMapper = (rs, i) -> mapNotes(rs);
+        return jdbcTemplate.query("SELECT u.first_name, u.last_name, u.email, u.phone, n.user_id, n.title, n.note, n.note_priority, n.note_category, n.date_time " +
+                        "FROM notes n " +
+                        "LEFT OUTER JOIN users u ON n.user_id = u.id " +
+                        "WHERE n.note_category::varchar = ? ",
+                rowMapper, cat.name());
+    }
+
     private Note mapNotes(ResultSet rs) throws SQLException {
 
         User user = new User(
