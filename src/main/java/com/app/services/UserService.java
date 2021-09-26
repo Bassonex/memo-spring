@@ -30,9 +30,9 @@ public class UserService {
                     .replaceAll("\\)", "");
             user.setPhone(phone);
 
-           //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-           //String encodedPassword = encoder.encode(user.getPassword());
-           //user.setPassword(encodedPassword);
+           BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+           String encodedPassword = encoder.encode(user.getPassword());
+           user.setPassword(encodedPassword);
 
             userDao.storeUser(user);
             return user;

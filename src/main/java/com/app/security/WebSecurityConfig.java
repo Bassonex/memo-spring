@@ -14,12 +14,21 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    //// Allow css anywhere
+    //@Override
+    //public void configure(WebSecurity web) {
+    //    web.ignoring()
+    //            .antMatchers("/resources/**");
+    //}
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/welcome", "/registration").permitAll()
-                    .anyRequest().authenticated()
+                    .antMatchers("/styles/**", "/welcome", "/registration").permitAll()
+                    .anyRequest()
+                    .authenticated()
                     .and()
                 .formLogin()
                     .loginPage("/login").permitAll()
@@ -28,11 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .permitAll();
     }
 
-    // Allow css anywhere
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/resources/**").anyRequest();
-    }
+
 
     @Bean
     @Override
