@@ -3,7 +3,10 @@ package com.app.services;
 import com.app.dao.UserDao;
 import com.app.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +29,11 @@ public class UserService {
             String phone = user.getPhone().trim().replaceAll("\\(", "")
                     .replaceAll("\\)", "");
             user.setPhone(phone);
+
+           //BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+           //String encodedPassword = encoder.encode(user.getPassword());
+           //user.setPassword(encodedPassword);
+
             userDao.storeUser(user);
             return user;
         }

@@ -15,9 +15,11 @@
                     oninvalid="this.setCustomValidity('Please Enter your surname.')" oninput="setCustomValidity('')"></div>
         <div><input type="text" placeholder="E-mail" th:field="*{email}" required aria-required="true"
                     oninvalid="this.setCustomValidity('Please Enter your email.')" oninput="setCustomValidity('')"></div>
+        <div><input type="password" placeholder="Password" th:field="*{password}" required aria-required="true"
+                    oninvalid="this.setCustomValidity('Please Enter your password.')" oninput="setCustomValidity('')"></div>
         <div><input type="text" placeholder="Phone" th:field="*{phone}" required aria-required="true"
                     oninvalid="this.setCustomValidity('Please Enter your phone number.')" oninput="setCustomValidity('')"></div>
-        <div><input type="submit" value="Register!"></div>
+        <div><input type="submit" value="Register!" class="btn-style"></div>
     </form>
 </div>
 </body>

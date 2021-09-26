@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" id="gotop">
+<head>
+    <meta charset="UTF-8">
+    <link th:href="@{/styles/cssandjs/main.css}" rel="stylesheet" type="text/css"/>
+    <title>Login page</title>
+</head>
+<body>
+<div th:if="${param.error}">
+    Invalid email or password!
+</div>
+<div th:if="${param.logout}">
+    Your session expired!
+</div>
+<div class="content">
+    <h1>Login</h1>
+    <form th:action="@{/login}" method="POST">
+        <div><input type="text" placeholder="Email" name="username" required aria-required="true"
+                    oninvalid="this.setCustomValidity('Please Enter your name.')" oninput="setCustomValidity('')"></div>
+        <div><input type="password" placeholder="Password" name="password" required aria-required="true"
+                    oninvalid="this.setCustomValidity('Please Enter your password.')" oninput="setCustomValidity('')"></div>
+        <div><input type="submit" value="Sign in!" class="btn-style"></div>
+    </form>
+</div>
+</body>
+</html>
